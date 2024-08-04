@@ -1,12 +1,12 @@
 "use client"
 import Image from "next/image";
+import "../styles/custom.css";
 import nana from "../styles/ungu.jpg";
 import tgs1 from "../styles/tgs1.jpg";
 import tgs2 from "../styles/tgs2.jpg";
 import tgs3 from "../styles/tgs3.jpg";
 import tgs4 from "../styles/tgs4.jpg";
-import { Inter } from "next/font/google"
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import React from 'react';
 
 export default function Home() {
@@ -16,6 +16,17 @@ export default function Home() {
 	const toggleNavbar = (): void =>{
   	setisClick(!isClick)
 	}
+	const [scrolling, setScrolling] = useState(false);
+	useEffect(() => {
+		const handleScroll = () =>{
+			setScrolling(window.scrollY > 10);
+		};
+		window.addEventListener('scroll', handleScroll);
+
+		return() => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
   return (
     <main>
       <nav className='bg-teal-100 fixed top-0 lef0 w-full flex items-center z-10'>
@@ -218,17 +229,17 @@ export default function Home() {
           <form>
 			      <div className="w-full lg:w-3/6 mx-auto">
 			        <div className="w-full px-4 mb-8">
-			          <label form="Name" className="text-base font-bold text-teal-600">Name</label>
+			          <label htmlFor="Name" className="text-base font-bold text-teal-600">Name</label>
 			          <input type="text" id="name" className="w-full bg-slate-200 text-black p-3 rounded-md focus:outline-none focus:ring-slate-800 focus:ring-1 focus:border-slate-800"></input>
 			        </div>
 			        {/* email */}
 			        <div className="w-full px-4 mb-8">
-			          <label form="Email" className="text-base font-bold text-teal-600">Email</label>
+			          <label htmlFor="Email" className="text-base font-bold text-teal-600">Email</label>
 			          <input type="Email" id="Email" className="w-full bg-slate-200 text-black p-3 rounded-md focus:outline-none focus:ring-slate-800 focus:ring-1 focus:border-slate-800"></input>
 			        </div>
 			        {/* pesan */}
 			        <div className="w-full px-4 mb-8">
-			          <label form="Pesan" className="text-base font-bold text-teal-600">Message</label>
+			          <label htmlFor="Pesan" className="text-base font-bold text-teal-600">Message</label>
 			          <textarea typeof="email" id="email" className="w-full bg-slate-200 text-black p-3 rounded-md focus:outline-none focus:ring-slate-800 focus:ring-1 focus:border-slate-800 h-32"></textarea>
 			        </div>
 			        <div className="w-full px-4">

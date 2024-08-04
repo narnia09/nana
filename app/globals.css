@@ -4,13 +4,16 @@
 
 body{
   font-family: "inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-.container: {
+/* .container: {
   center: true;
   padding: '16px'
 }
 
 .screens: {
   '2xl' : '1320xl',
-}
+} */
